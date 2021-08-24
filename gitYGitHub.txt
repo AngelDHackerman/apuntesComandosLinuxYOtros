@@ -72,6 +72,7 @@ git reset HEAD                              Este es el comando para sacar archiv
 
 git commit -am "commit a agregar"                      esto le da add a los cambios y agrega un commit (solo funciona si no es un archivo nuevo al que no se la dado add .)
 git branch nombreDeLaNuevaRama                         asi creamos nuevas ramas en git.
+git branch -D nombreDelaRama                           asi borramos las ramas.
 git checkout nombreDeLaRama                            asi nos movemos a una rama diferente.
 git branch                                             muestra las ramas que tenemos.
 git merge ramaAUnificar                                estando en la rama principal, hacemos merge para agregar los ultimos cambios hechos en la otra rama.
@@ -162,6 +163,60 @@ git stash list                                vemos lo que tenemos en stash. WIP
 git stash pop                                vemos el stash que teniamos antes y los cambios que habiamos ejecutado durante el stash.
 git stash branch nombreDeLaNuevaRama         con esto salvamos los cambios que hicimos en el stash en otra rama.
 git stash drop                               con esto eliminamos lo que tenemos en stash.
+
+
+                                             GIT CLEAN: LIMPIAR TU PROYECTO DE ARCHIVOS NO DESEADOS
+
+     git clean sirve para eliminar archivos que no han sido trackeados y que no queremos agregar al respositorio.
+
+git clean --dry-run                               podemos ver lo que se va a borrar sin borrarlo.
+git clean -f                             se borran los archivos no trackeados, pero deja los archivos con el mismo nombre que los que si estan traqueados (toca borrarlos a mano) y que los los .gitignore
+
+
+                                             GIT CHERRY-PICK: TRAER COMMITS VIEJOS AL HEAD DE UN BRANCH
+
+git log --online                        podemos ver los commits de forma ordenada.
+
+     Desde la rama que tomara los cambios:
+
+git cherry-pick numeroDelHash                     nos traemos solos los cambios que hicimos en se commit. 
+
+
+                                             RECONSTRUIR COMMITS CON AMEND
+
+
+git commit --amend -m "nuevoNombreDelCommit"           con esto reparamos el nombre del ultimo commit de la rama donde estamos.
+
+
+                                        GIT RESET Y REFLOG: USESE EN CASO DE EMERGENCIA
+
+
+git reflog                                             aqui se ve TODO y se ven los "HEAD" del proyecto es decir los cambios hechos y ver donde estaba el apuntador.
+git reset --HARD numeroDelHash                      con el head que sacamos del reflog podemos usar reset y regresar todo antes de haber hecho los cambios indeseados.
+
+
+                                        BUSCAR ARCHIVOS Y COMMITS DE GIT CON GREP Y LOG
+
+git grep palabraABuscar                      con esto buscamos la palabra dentro de nuestro proyecto
+git grep -n palabraABuscar                   lo mismo de arriba pero nos dice el numero de linea.
+git grep -c palabraABuscar                   cuenta el numero de veces que fue usada la palabra selecionada.
+git grep -c "<p>"                            lo mismo de arriba pero este es usado para cuando tenemos los caracteres <> para buscar un parrafo dentro de nuestro codigo.
+
+git log -S "palabraABuscar"                  con esto buscamos la palabra seleccionada pero dentro de los commits.
+
+
+
+                                             COMANDOS Y RECURSOS COLABORATIVOS EN GIT Y GITHUB (episodio 42)
+
+
+git shortlog                                      con este podemos ver cuantos commits ha hecho cada miembro del proyecto
+git shortlog -sn                                  nos muesta las personas que han hecho los commits
+git shortlog -sn --all                            muestra tdos los commits hasta los que fueron borrados. 
+git shortlog -sn --all --no-merges                nos muestra todos los commits menos los merges.
+git config --global alias.stats "shortlog -sn --all --no-merges"           asi creamos un alias llamado stats dentro del entorno git y NO el global y va a ejecutar shorlog ...
+
+git blame -c nombreDelArchivo                           aqui podemos ver quien creo cada linea del codigo
+git blame nombreDelArchivo -L15,45 -c                   podemos ver quien modifico esas lines en el archivo invocado.
 
 
 
