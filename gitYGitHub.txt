@@ -80,7 +80,7 @@ git merge ramaAUnificar                                estando en la rama princi
                                                        USANDO GITHUB
 
 
-git remote add origin direccionUrlDelRepositorio       asi se agrega un repositorio remoto usando https
+git remote add origin direccionUrlDelRepositorio       asi se agrega un repositorio remoto usando https SUPER IMPORTANTE CUANDO INICIAMOS UN NUEVO REPOSITORIO EN GIT!!!
 git remote                                        podemos ver los respositorios remotos
 git remote -v                                     podemos ver la URL de los repositorios remotos
 git push origin nombreDeLaRama                    asi mandamos los cambios hechos a github de la rama que estamos seleccionando.
