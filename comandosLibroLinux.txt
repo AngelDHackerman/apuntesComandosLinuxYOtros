@@ -1,0 +1,180 @@
+                                   PRIMEROS PASOS
+
+
+date                               nos da la fecha
+cal                                 calendario
+df                                 muestra el espacio en memoria disponible
+free                               muestra la memoria ram disponible
+exit                               salimos de la terminal
+ctrl+alt+f1-f6                     abre la terminal virtual
+alt+f7                             sale de la terminal virtual
+
+
+                              NAVENGANDO EN LA TERMINAL
+
+pwd                           muestra el directorio en el que estamos
+cd                            cambia el directorio al que vamos
+ls                            lista los archivos y directorios donde estamos
+cd ..                         regresa al directorio anterior (retrocede)
+cd -                          vuelve al directorio donde estabamos trabajando (avanza)
+ls -a                         muestra los archivos escondidos
+
+
+                              EXPLORANDO EL SISTEMA
+
+
+file nombreDelArchivo                   nos dice que tipo de archivo es.
+less nombreDelArchivo                   ve el contendio del archivo
+ls ~ nombreDeLaCarpeta                  muestra las carpetas en home y tambien en el directorio llamado
+ls -l                                   muestra los archivos con formato largo
+ls -lt                                  muestra los archivos en orden del ultimo en modificarse hasta el ultimo en NO modificarse
+ls -lt --reverse                        lo mismo de arriba pero a la inversa
+
+-a   --all                              List all files, even those with names that begin with a period, which are normally not listed (i.e., hidden).
+
+-d   --directory                        Ordinarily, if a directory is specified, ls will list the contents of the directory, not the directory itself. 
+                                        Use this option in conjunction with the -l option to see details about the directory rather than its contents.
+
+-F   --classify                         This option will append an indicator character to the end of each listed name (for example, a forward slash 
+                                        if the name is a directory).
+
+-h   --human-readable                   In long format listings, display file sizes in human-readable format rather than in bytes. 
+
+-l                                     Display results in long format.
+
+-r   --reverse                         Display the results in reverse order. Normally, ls displays its results in ascending alpha-betical order.
+
+-S                                      Sort results by file size.
+
+-t                                      Sort by modification time.
+
+
+
+                                             DIRECTORIOS ENCONTRADOS EN LINUX
+
+
+/                         es el directorio root, donde todo comienza
+/bin                      contiene los binarios (programas) para hacer que el sistema arranque y funcione.
+/boot                     aqui esta el kernel de linux.
+/dev                     aqui estan los device nodes, aqui se guardan los dispositivos que linux entiende
+/etc                     aqui esta una coleccion de shell scripts, contiene todos los archivos de configuracion del sistema
+/home                    es donde el usuario puede escribir sus directorios personales.
+/lib                     contiene libreria de archivos compartida por el nucleo de los programas
+
+
+
+                                             MANIPULANDO ARCHIVOS Y DIRECTORIOS
+
+
+mkdir nameNewFile                  crea una nueva carpeta
+cp rutaOrigen rutaDesito                copia los archivos de la ruta origen a la del destino, tambien se le puede agregar las siguientes banderas
+
+-a,  --archive                     Copy the files and directories and all of their attributes, including ownerships and permissions. Normally, copies 
+                                   take on the default attributes of the user performing the copy.
+
+-i,  --interactive                 Before overwriting an existing file, prompt the user for confirmation. I f this option is not specified, cp will
+                                  silently overwrite files.
+
+-r,  --recursive                   Recursively copy directories and their contents. This option (or the -a option) is required when copying directories.
+
+-u,  --update                   When copying files from one directory to another, copy only files that either don’t exist or are newer than 
+                                 the existing  corresponding files in the destination directory.
+
+-v,   --verbose                    Display informative messages as the copy is performed.
+
+
+                                        MOVER Y RENOMBRAR ARCHIVOS
+mv item1 item2                     si esto se hace dentro del mismo directorio solo le cambia de nombre.
+mv item1 rutaDelDirectorio              asi movemos un archivo a otra direccion. (esto hace un copy y luego elimina el archivo viejo)
+
+OPCIONES DE MV:
+
+-i,   --interactive                Before overwriting an existing file, prompt the user for confirmation. I f this option is not specified, mv will silently overwrite files.
+
+-u,   --update                When moving files from one directory to another, move only files that either don’t exist in the destination directory or are newer than the existing corresponding files in the
+                                destination directory.
+
+-v,   --verbose               Display informative messages as the move is performed.
+
+
+                                        ELIMINAR DIRECTORIOS
+
+rm item             asi se elimina un archivo. UNA VEZ ELIMINADO NO HAY MANERA DE RECUPERARLO CUIDADO!!!!
+rm *.html           elimina todos los archivos DENTRO DEL MISMO DIRECRTORIO.
+rm * .html          eliminia TODOS LOS ARCHIVOS html en TODO EL DISCO DURO! son con agregar el espacio en el wilcard y el archivo llamado
+
+RM OPCIONES:   
+
+-i,   --interactive      Before deleting an existing file, prompt the user for confirmation. I f this option is not specified, rm will silently delete files.
+
+-r,   --recursive        Recursively delete directories. This means that if a directory being deleted has subdirectories, delete them too. To delete a directory, this option must be specified.
+
+-f,   --force            Ignore nonexistent files and do not prompt. This overrides the --interactive option.
+
+-v,   --verbose          Display informative messages as the deletion is performed.
+
+
+                                        LN CREAR LINKS
+el comando in es usado para crear links duros o simbolicos. 
+
+ln file link             crea un link duro (hard link)
+ln -s item link          crea un link simbolico (simbolic link)
+
+          Hard Links
+
+Hard links are the original Unix way of creating links; symbolic links are more modern. By default, every file has a single hard link that gives the file its name. When we create a hard link, we create an additional directory entry for a file. Hard links have two important limitations:
+
+* A hard link cannot reference a file outside its own filesystem. This means a link cannot reference a file that is not on the same disk partition as the link itself.
+
+* A hard link cannot reference a directory. 
+
+A hard link is indistinguishable from the file itself. Unlike a directory list containing a symbolic link, a directory list containing a hard link shows no special indication of the link. When a hard link is deleted, the link is removed, but the contents of the file itself continue to exist (that is, its space is not deallocated) until all links to the file are deleted.
+
+It is important to be aware of hard links because you might encounter them from time to time, but modern practice prefers symbolic links, which we will cover next.
+
+          Symbolic Links
+
+Symbolic links were created to overcome the limitations of hard links. Symbolic links work by creating a special type of file that contains a text pointer to the referenced file or directory. In this regard they operate in much the same way as a Windows shortcut, though of course they predate the Windows feature by many years. ;-)
+
+A file pointed to by a symbolic link and the symbolic link itself are largely indistinguishable from one another. For example, if you write something to the symbolic link, the referenced file is also written to.However, when you delete a symbolic link, only the link is deleted, not the file itself.
+
+If the file is deleted before the symbolic link, the link will continue to exist but will point to nothing. In this case, the link is said to be broken. In many implementations, the ls command will display broken links in a distinguishing color, such as red, to reveal their presence.
+
+The concept of links can seem confusing, but hang in there. We’re going to try all this stuff and it will, hopefully, become clear.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

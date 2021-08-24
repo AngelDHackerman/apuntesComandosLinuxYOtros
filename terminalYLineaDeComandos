@@ -1,0 +1,241 @@
+ls 	                                        lista los archivos en el directorio
+cd                                           nombreDeLaCapeta cambia de directorio 
+cd .. 	                                   cambia la carpeta anterior. 
+ctrl + l	                                   limpia el texto en la consola
+ls -la	                                   muestra los archivos ocultos y su descripion larga.
+ls -lh	                                   muestra los archivos con su descripcion larga pero los humanos pueden entender mejor la info.
+cd	                                        este nos lleva directo al directorio home. 
+pwd  	                                   este nos muestra en que directorio estamos.
+cd ../..	                                   nos manda al archivo root. 
+file nombreDelArchivo                        nos describe el tipo de archivo que nombramos
+                                             
+                                             
+ls -lS                                       ordena todos los archivos segun su tamaño
+ls -lSh                                      lo mismo que el de arriba pero con la descripcion del peso
+ls -lr                                       muestra los archivos a la inversa del order alfabetico
+tree                                         despliega todos los archivos como si fueran un arbol
+tree -L numeroDeNiveles                      le dice a tree cuantos niveles tiene que profundizar exem: tree -L 2 
+mkdir nameOfNewDirectory                     crea un nuevo directorio 
+touch nameOfNewFile                          crea un nuevo archivo
+mkdri dir1 dir2 dir3                         puede crear varios directorios al mismo tiempo dandoles el nombre deseado
+touch file1 file2 file3                      puede crear varios archivos al mismo tiempo dandoles el nombre deseado
+
+
+cp fileName nameOfNewFile                    copia un archivo en el mismo directorio
+mv nameOfFile whereToMoveIt                  copia un archivo y lo manda la ruta seleccionada.
+rm fileName                                  elimina el archivo llamado (este comando es peligroso)
+rm -i fileName                               elimina el archivo llamado (de forma interactiva haciendolo menos peligroso)
+rm -rf fileName                              elimina el archivo llamdo (aun MAS PELIGROSO porque elimina de forma recursiva sin importar las consecuencias)
+rm -ri fileName                              elimina el archivo llamdo de forma recursiva pero con interactividad
+rm -r file1 file2 file3 dir1 dir2            eliminamos varios archivos y directorios al mismo tiempo
+
+
+head fileName                                nos muestra las primeras 10 lineas del archivo seleccionado.
+head fileName -n 15                          nos muestra las primeras 15 lineas del archivo seleccionado.
+tail fileName                                nos muestra las ultimas 10 lineas del archivo seleccionado.
+tail fileName -n 20                          nos muestra las ultimas 20 lineas del archivo seleccionado.
+less fileName                                nos muestra el archivo de texto de manera interactiva. SI AGREGAMOS /searchAWord podemos buscar una palabra
+
+
+xdg-open fileName                            abre el archivo con su programa predeterminado. Tambien se puede agregar al final &disown para dejar limpia la consola
+nautilus directoryName                       abre el directorio que llamamos
+
+
+type commandName                             dice que tipo de commando se trata, (builtin command, comando binarios, alias, etc)
+alias aliasName="comandToUse"                podemos agregar un alias temporal para ejectuar varios comandos a la vez.
+help commandName                             optenemos ayuda del comando llamado.
+man commandName                              abrimos el manual de usuario del comando seleccionado.
+info commandName                             nos da la informacion resumida del comando seleccionado
+whatis commandName                           da una descripcion corta de lo que hace el comando 
+
+
+                              WILDCARDS 
+
+ls *.txt                                     nos muestra todos los archivos que terminan en .txt
+ls fileName*                                 esto nos muestra los archivos que tengan el nombre "fileName" + varios caracteres despues.
+ls fileName?                                 trae todos los archivos que se llamen "fileName" y solo tengan 1 caracter de mas al final
+ls fileName???                               trae todos los archivos que se llamen "fileName" y solo tengan 3 caracteres de mas al final
+ls [[:upper:]]*                              muestra todos los archivos que su nombre empieze con mayuscula
+ls -d [[:upper:]]*                           muestra todos los directorios(carpetas) que su nombre empieze con mayuscula
+
+ls [[:lower:]]*                              muestra todos los archivos que su nombre empieze con  minuscula
+ls -d [[:lower:]]*                           muestra todos los directorios(carpetas) que su nombre empieze con minuscula
+ls [ad]*                                     muestra los archivos que INICIEN con una "a" o una "d" y varios caractares despues
+
+
+                              REDIRECCIONES 
+
+ls directoryName > newFileName.txt        crear un archivo llamado newFileName y le escribe todos los nombres del directorio "fileName" adentro
+ls otherDirectoryName >> newFileName.txt     al archivo creado de newFileName le concatena la nueva informacion proveniente del "otherFileName"
+ls nameOfFileThatDoesNotExist 2> file.txt              envia el texto del error a un nuevo archivo creado.
+ls nameOfFileThatDoesNotExist > output.txt 2>&1        envial el texto la descripcion del standar error a un archivo creado. 
+ls nameOfFileThatExist/ >output.txt 2>^1               envia el texto la descripcion del la salida estandar del comando llamado.
+
+
+
+
+     Independiente del lenguaje, cualquier programa tiene un flujo de entrada de datos “STANDAR INPUT” = “<”, un flujo de salida “STANDAR OUTPUT” = “>” o “1>” y un modo de capturar errores “STANDAR ERROR” = “2>”. En la terminal, podemos tener este mismo flujo de datos gracias a: “<” , “>” y “2>”.
+TIP: esto es muy utilizado en los logs para definir los estados: [“ok”, “warning”, “error”].
+.
+Es muy importante recordar que el uso del redireccionamento “STANDAR OUTPUT” = “>” hacia un archivo hace que se borre todo su contenido y se guarde el actual “STANDAR OUTPUT”, si quieres que no se borre la información actual del archivo, tendrías que agregar un doble “STANDAR OUTPUT” por ejemplo:
+echo “hola, mundo!” > día.txt
+echo “buenas tardes, mundo!” > día.txt
+echo “buenas noches, mundo!” >> día.txt
+cat día.txt
+buenas tardes, mundo!
+Buenas noches, mundo!
+
+
+
+
+echo "Hola platzi!"                               genera un standar output de cualquier cosa que le escribamos 
+cat file1.txt file2.txt                           sirve para concatenar 2 archivos 
+ls -lh | less                                   con esto pasamos el output de ls -lh hacia el comando less con / podemos buscar palabras
+ls -lha | less | tee fileName.txt                 lo mismo que arriba pero aqui nos redirije la info con el comando tee a un newFile
+ls -lha | tee fileName.txt | less                 aqui primero vemos los archivos y luego se crea el archivo fileName.txt
+ls -lha Descargas | sort | tee descargas.txt | less    lo mismo que arriba pero lo muestra en forma ordenada
+cowsay "textToExpress"                            saca una vaquita diciendo lo que se le pase 
+cowsay "textToExpress" lolcat                     nos devuelve el texto con varios colores cuando usamos el lolcat
+
+
+
+                              EJECUTANDO COMANDOS DE MANERA SINCRONA Y ASINCRONA (OPERADORES DE CONTROL)
+
+
+
+ls; mkdir directoryName; cal            muestra los archivos, crear un directorio y nos enseña el calendario de manera sincrona
+ls & mkdir directoryName & cal          muestra los archivos, crear un directorio y nos enseña el calendario de manera Asincrona
+mkdir test && cd test && cal      crear un directorio y si se finaliza bien se moveral al directori y si se mueve al directorio, mostrar el calendar
+cd home || touch text.txt || cal    se mueve a la carpeta y si eso falla igual crea un archivo .txt y si eso falla igual muestra el calendario
+
+
+
+Nota importante:
+
+Comandos separados por punto y coma “;” : Se ejecutan uno seguido del otro en el orden en que fueron puesto. Uno no se ejecuta hasta que el otro proceso aya terminado.
+–
+Comandos separados por & : Se ejecutan todos al mismo tiempo, es decir de forma asíncrona.
+–
+Comandos separados por && : Se ejecutan solo si el comando anterior se aya ejecutado exitosamente. Suponemos que A, B y C son comando:
+A && B && C
+El B solo se va ejecutar si el A se ejecuta exitosamente, y el C solo se va ejecutar si el B si ejecuta exitosamente. Si el B no se ejecuta exitosamenta el C no se ejecuta. Si el A no se ejecuta exitomante el B y el C no se ejecutan.
+–
+Comandos separados por || : Solo se ejecuta uno. Sea cuantos comandos tienes separados por || solo ejecuta o toma en cuenta el primer que se ejecuta exitosamente (bajo la redundacia), y descarta automaticamente los demas. Cuando uno de los comandos se ejecuta exitosamente, descarta los demas comandos.
+
+
+                                 COMO MANEJAR PERSIMOSOS
+
+
+-                                  un archivo normal 
+d                                  un directorio
+l                                  un link simbolico
+b                                  un archivo de bloque especial. Son archivos que manejan la informacion de los bloques de datos como una USB.
+
+
+r                                  read
+w                                  write 
+x                                  execute
+chmod                              https://es.wikipedia.org/wiki/Chmod#Modo_octal (ver el modo octal)
+sistema de permisos       https://platzi.com/tutoriales/1667-linux/8811-cosas-que-nos-sabias-sobre-el-sistema-de-permisos-de-linux-realmente-es-octal/
+
+
+                              MANEJAR PERMISOS DESDE LA TERMINAL
+
+chmod                         sirve para dar permisos sobre un archivo. 
+chmod 755                     da lectura, escritura, ejecucion para el usuario y para el grupo y el mundo solo lectura y ejecucion.
+chmod u-r fileName             le quita permos de lectura al Usuario. 
+chmod u+r fileName             le da permisos de lectura al Usuario.
+chmod u-x,go=w fileName       quita permisos de ejecucion al Usuario y le da permisos de escritura al Grupo & Others
+whoami                        nos dice quienes somos en la terminal.
+id                            nos da informacion sobre el sistema operativo y el usuario
+sudo su                       entramos al usuario root.
+
+
+                         VARIABLES DE ENTORNO
+
+ln -s rutaAElegir nameOfSymbolickLink                  con esto creamos un link simbolico
+rm nameOfSymbolickLink                               eliminamos el link simbolico
+printenv                                           aqui vemos las variables de entorno.
+echo $PATH                                        Variable que contienen los binarios donde se ejecuta nuestro sistema (BASTANTE USADA)
+alias buenosDias="sudo apt update && sudo apt update -y && expressvpn connect"  Asi se puede agregar un alias usadon VS code.
+
+
+                         COMANDOS DE BUSQUEDA
+
+which
+whereis
+find rutaInicalParaBuscar -name nombreDelArchivo       con esto buscamos archivos en linux
+find ./ -name *.txt                               con esto buscamos todos los archivos que terminan en .txt usando wildcards
+find ./ -type f,d                                 busca archivos y directorios Files & Directories 
+find ./ -type d -name Documentos                  busca directorios llamados Documentos
+find ./ -size 20M                                 busca archivos mayores a 20 Megabytes
+
+
+                              GREP
+
+
+Grep nos permite encontrar coincidencias de una busqueda dentro de un archivo de texto o dentro de cualquier texto, por ejemplo un standar output
+
+grep wordToSearch fileWhereSearchIt          con esto buscamos una palabra dentro del archivo llamado 
+grep -i wordToSearch fileWhereSearchIt       lo mismo de arriba pero sin tomar en cuenta si es mayuscula o minuscula la palabra a buscar. 
+grep -c wordToSearch fileWhereSearchIt       cuenta el numero de veces que se encontro la palabra dentro del archivo llamado.
+grep -ci wordToSearch fileWhereSearchIt       lo mismo de arriba pero ignorando mayusculas o minusculas.
+grep -vi wordToSearch                      muestra los resultados que NO contengan la palabara a buscar (ignorando mayusculas o minusculas)
+grep -vi wordToSearch > fileName.txt         lo mismo de arriba pero lo guarda en un archivo .txt
+wc fileName.txt                             cuenta el numero de palabras, lineas y bits de un archivo de texto. 
+wc -l fileName.txt                         cuenta el numero de lineas
+wc -w fileName.txt                      cuenta el numero de palabras
+wc -c fileName.txt                      cuenta el numero de bits 
+
+
+
+                                        UTILIDADES DE LA TERMINAL
+
+
+ifconfig                                nos muestra informacion de nuestra red.
+ping www.google.com                     nos dice si una pagina esta activa
+curl                                    trae un archivo de manera de texto atravez de la red.
+curl www.google.com > index.html        asi guardamos el curl de una pagina web.
+wget www.google.com                     lo mismo que curl pero lo descarga direcamente a nuestra computadora (usado tambien para instalacion de archivos)
+traceroute www.google.com              muestra todas las computadoras usadas para llegar al sitio web seleccionado
+netstat -i                              muestra los dispositivos de red
+
+
+                                        COMPRIMIENDO ARCHIVOS
+
+
+tar -cvf fileName.tar fileName           asi comprimimos, c de compress v de verbose (ver el output en la terminal) f de file
+tar -cvzf fileName.tar.gz fileName           lo mismo de arriba pero los comprime en formato gz
+rm -r fileName                          borra carpetas con sus archivos incluidos
+tar -zxvf fileName.tar.gz               DESCOMPRIME el archivo z de gz, x de descomprimir, v de verbouse (visual) f de file. 
+zip -r fileName.zip FileName            comprime en formato zip, -r de recursivo
+unzip fileName.zip                      DESCOMPRIME el archivo de formato .zip
+
+
+                                        MANEJO DE PROCESOS
+
+
+ps                                           muestra los procesos que estan corriendo en la terminal actualmente
+kill PID(process ID)                         y con esto matamos a el proceso.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
