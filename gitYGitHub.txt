@@ -75,6 +75,8 @@ git branch nombreDeLaNuevaRama                         asi creamos nuevas ramas 
 git branch -D nombreDelaRama                           asi borramos las ramas.
 git checkout nombreDeLaRama                            asi nos movemos a una rama diferente.
 git branch                                             muestra las ramas que tenemos.
+git branch -r                                          muestra las ramas que tenemos en remoto.
+git branch -a                                          muestra las ramas locales y las remotas.
 git merge ramaAUnificar                                estando en la rama principal, hacemos merge para agregar los ultimos cambios hechos en la otra rama.
 
 
