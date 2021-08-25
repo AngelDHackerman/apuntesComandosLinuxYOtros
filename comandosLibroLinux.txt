@@ -115,6 +115,7 @@ RM OPCIONES:
 
 
                                         LN CREAR LINKS
+
 el comando in es usado para crear links duros o simbolicos. 
 
 ln file link             crea un link duro (hard link)
@@ -143,12 +144,20 @@ If the file is deleted before the symbolic link, the link will continue to exist
 The concept of links can seem confusing, but hang in there. We’re going to try all this stuff and it will, hopefully, become clear.
 
 
+                                                       TRABAJANDO CON COMANDOS
+
+type commandName                      descritp que tipo de comando es el comando llamado.
+which commandName                       nos dice la ubicacion del ejecutable del comando llamado.
+commandName --help                      no da ayuda sobre el comando que estamos llamado.
+man commandName                         nos muestra el manual del comando llamaod.
+
+man 5 commandName                       mismo de arriba, pero en la seccion 5 del manual.
+apropos commandName                     nos muestra las secciones y sus titulos del MANUAL del comando llamado.
+whatis commandName                      da un breve resumen del comando llamado.
+info 
 
 
-
-
-
-
+                                                       Creando tu programa con alias
 
 
 
