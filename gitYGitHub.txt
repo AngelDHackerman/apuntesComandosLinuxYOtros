@@ -73,6 +73,7 @@ git reset HEAD                              Este es el comando para sacar archiv
 git commit -am "commit a agregar"                      esto le da add a los cambios y agrega un commit (solo funciona si no es un archivo nuevo al que no se la dado add .)
 git branch nombreDeLaNuevaRama                         asi creamos nuevas ramas en git.
 git branch -D nombreDelaRama                           asi borramos las ramas.
+git push origen --delete nombreDeLaRama                asi borramos las ramas en remoto.  
 git checkout nombreDeLaRama                            asi nos movemos a una rama diferente.
 git branch                                             muestra las ramas que tenemos.
 git branch -r                                          muestra las ramas que tenemos en remoto.
