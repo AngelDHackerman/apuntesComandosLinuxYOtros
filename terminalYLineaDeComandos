@@ -219,6 +219,27 @@ ps                                           muestra los procesos que estan corr
 kill PID(process ID)                         y con esto matamos a el proceso.
 
 
+                                        USO DEL EMULADOR DE TERMINAL TILIX
+
+ctrl + alt + r                          abre una nueva terminal a la derecha.
+ctrl + alt + d                          abre una nueva terminal en la parte de abajo.
+ctrl + +                                aumenta el tamaño de la fuente. 
+ctrl + -                                disminuye el tamaño de la fuente.
+ap + tab                                se puede ver todos los comandos que existen con la inicial ap
+en preferencias                         se pueden ver todos los atajos de teclado.
+ctrl + shift + x                        zoom in en la terminal actual
+
+ctrl + izquierda/derecha                se avanza de palabra en palabra dentro de la misma linea
+ctrl + d                                se cierra la terminal actual
+alt + backspace                         se borrar por completo la palabra que esta detras del cursor. 
+home / end                              te llevan al principio o al final de cada linea.
+ctrl + u                                borra toda la linea del comando.
+alt + u                                 pone en mayusculas la palabra que esta adelante del cursor.
+
+ctrl + r + nombreOInicialesDelComandoDeseado                hace una busqueda inversa del comando que llamamos, 
+ctrl + k                                borra todo lo que este delante del cursor en la terminal.
+!!                                      corre el ultimo comando usado.
+
 
 
 
