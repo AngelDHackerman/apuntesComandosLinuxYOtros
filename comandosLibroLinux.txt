@@ -160,10 +160,34 @@ info
                                                        Creando tu programa con alias
 
 
+code .zshrc                            se abre la fuente de ZSH para poder editar y crear el alias
+alias nombreDelAlias ="comandos que usaremos"   en el archivo .zshrc agregamos esto y se crea un nuevo alias
 
 
+                                                    I/O REDIRECCIONES
 
 
+ls -l > archivo.txt                         manda la salida de ls -l a un nuevo archivo llamado archivo.txt
+ls -la >> archivo.txt                       agrega la salida de ls -la a archivo.txt sin sobreescribir la antigua informacion en el archivo.txt
+cat fileName.txt                            lee 1 o mas archivos que se le pasen.
+
+movie.mpeg.001 movie.mpeg.002 ... movie.mpeg.099                    digamos que tenemos muchos archivos descargados y separados y deben formar uno solo.
+
+cat movie.mpeg.0* > movie.mpeg              con el wildcard vamos a unir todos los archivos que tengan .0 en uno solo llamado movie.mpeg
+
+Para mas funcionalidades ver la pagina 86 de The linux command line.
+
+                                                PIPE LINES
+
+
+comando1 | comando2                             toma la salida del primer comando y se la pasa al otro.
+wc fileName.txt                                 cuenta cuantas palabras tiene el archivo de texto.
+head fileName.txt                               muestra la cabecera del archivo llamado 
+tail fileName.txt                               muestra la parte de abajo del archivo llamado.
+head -n 5 fileName.txt                          muestra las primeras 5 lineas de la cabecera del archivo llamado
+tail -n 5 fileName.txt                          muestra las primeras 5 lineas del pie del archivo llamado
+
+tail -f fileName.txt                            muestra los cambios del archivo en tiempo real, exem: cuando al archivo le estan llegando nuevos logs o nuevas actualizaciones.
 
 
 
