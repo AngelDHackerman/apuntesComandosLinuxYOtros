@@ -188,9 +188,49 @@ head -n 5 fileName.txt                          muestra las primeras 5 lineas de
 tail -n 5 fileName.txt                          muestra las primeras 5 lineas del pie del archivo llamado
 
 tail -f fileName.txt                            muestra los cambios del archivo en tiempo real, exem: cuando al archivo le estan llegando nuevos logs o nuevas actualizaciones.
+echo                                            nos regresa el texto que le pasemos
+echo *                                          muestra todos los archivos contenidos dentro del directorio NO muestra archivos escondidos
+echo *D                                         lo mismo de arriba pero muestra los que COMIENCEN con D.
+echo D*                                         lo mismo de arriba pero muestra los que FINALICEN con D.
+echo [[:upper:]]*                               muestra todos los archivos que comiencen con MAYUSCULA
+ls -d .[!.]?*                                   muestra en su mejor medida a los archivos ocultos.
+echo ~                                          muestra el archivo home.
+echo $(( 2 +2 ))                                permite usar la consola como una calculadora.
+
++                                               suma
+-                                               resta
+*                                               Multiplicacion
+/                                               Division (But remember, because expansion supports only integer arithmetic, results are integers.)
+%                                               Modulo, este ve el residuo de la division.
+**                                              Exponenciacion
+
+echo Cico dividivo entre 2 da $((5/2))  con $((5%2)) restante.
 
 
+                                              Brace Expansion
 
+echo Front-{A,B,C}-Back                       Front-A-Back Front-B-Back Front-C-Back
+echo Number_{1,2,3,4,5}                       Number_1 Number_2 Number_3 Number_4 Number_5
+echo a{A{1,2},B{3,4}}b                        aA1b aA2b aB3b aB4b
+
+            Entonces, ¿para qué sirve esto? La aplicación más común es hacer listas.
+            de archivos o directorios que se crearán. Por ejemplo, si fuéramos fotógrafos
+            y tenía una gran colección de imágenes que queríamos organizar por años y
+            meses, lo primero que podemos hacer es crear una serie de directorios nombrados en
+            formato numérico año-mes. De esta forma, los nombres de los directorios se ordenarán en
+            orden lógico. Podríamos escribir una lista completa de directorios, pero eso es mucho
+            del trabajo y también es propenso a errores. En cambio, podríamos hacer esto:
+
+            [me@linuxbox ~]$ mkdir Pics
+            [me@linuxbox ~]$ cd Pics
+            [me@linuxbox Pics]$ mkdir {2009..2011}-0{1..9} {2009..2011}-{10..12}
+            [me@linuxbox Pics]$ ls
+            2009-01 2009-07 2010-01 2010-07 2011-01 2011-07
+            2009-02 2009-08 2010-02 2010-08 2011-02 2011-08
+            2009-03 2009-09 2010-03 2010-09 2011-03 2011-09
+            2009-04 2009-10 2010-04 2010-10 2011-04 2011-10
+            2009-05 2009-11 2010-05 2010-11 2011-05 2011-11
+            2009-06 2009-12 2010-06 2010-12 2011-06 2011-12
 
 
 
