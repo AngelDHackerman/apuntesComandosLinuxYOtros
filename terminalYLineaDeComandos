@@ -38,6 +38,7 @@ less fileName                                nos muestra el archivo de texto de 
 
 
 xdg-open fileName                            abre el archivo con su programa predeterminado. Tambien se puede agregar al final &disown para dejar limpia la consola
+xdg-open fileNmae &disown
 nautilus directoryName                       abre el directorio que llamamos
 
 
