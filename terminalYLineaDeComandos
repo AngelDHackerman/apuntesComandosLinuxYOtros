@@ -38,7 +38,8 @@ less fileName                                nos muestra el archivo de texto de 
 
 
 xdg-open fileName                            abre el archivo con su programa predeterminado. Tambien se puede agregar al final &disown para dejar limpia la consola
-xdg-open fileNmae &disown
+xdg-open fileNmae&disown -a
+
 nautilus directoryName                       abre el directorio que llamamos
 
 
@@ -243,13 +244,43 @@ ctrl + k                                borra todo lo que este delante del curso
 
 
 
+                                        COMANDOS APRENDIDOS EN "LA CALLE"
+
+find .                                  busca en el directorio actual
+find /                                  Busca desde el directorio raiz
+sudo ss -tupln                          lista todos los puertos abiertos
 
 
 
 
+find . -type f                                                              encuentra y lista los ficheros que COMIENZAN CON .
+find . -type f -printf "%f\t%p\t%u\t%g\t%m\n" | column -t              Muestres los archivos de forma Tabular, tadulada la ruta absoluta, tadulado el grupo asignado, tabulado el modo \n 
+                                                                           para salto de linea
+find . -name fileName | xargs cat                           hace cat al archivo encontrado por find en la ruta actual "." 
+| xargs                                                     trabaja de forma paralela al actual proceso 
 
 
+lsattr                                                           lee los permisos especiales en un archivo/documento
+chattr +i -V fileName.txt                                        Da permisos especiales al archivo
 
+time "comando a ejecutar"                                        Dice el tiempo que se tardo el comando en ejecutarse
+find . -type f -readable ! -executable -writable                 Encuentra en este directorio un "file" "leaible" "NO ejecutable" "escribible"
+find . -type f -readable ! -executable -size 1033c                Encuentra en este directorio un "file" "leaible" "NO ejecutable" y de un tamaño de 1033 bites "para los bites de agrega la c"
+
+find . -type f -readable ! -executable -size 1033c | xargs cat | sed 's/^ *//'  lo mismo de arriba pero; sustituye los espacios vacios por "nada": sed 's/^ *//'
+
+find . -type f -readable ! -excutable -size 1033c | xargs cat | xargs         lo mismo de arriba pero hazle cat a lo que este adentro y elimane los saltos de linea
+find . -type f -readable ! -excutable -size 1033c | xargs cat | tr -d '\n'      Elinima los saltos de linea
+
+
+cat /direccion/directorio/ | head -n 1 | sed 's/palabraACambiar/nuevaPalabra/g'      Muestra la primer linea del texto y luego usando sed sustituye la palabra deseada en toda la linea (g Global)
+cat /direccion/directorio/ | grep "^palabra"                                busta estrictamenrte las coincidencias que le mandemos por grep
+
+grep "palabraBuscar" fileName.txt                                          busca la palabra en el archivo llamado
+
+cat fileName.txt | wc -l                          cuenta el numero de lineas de un texto
+cat fileName.txt | sort                           Ordena de manera alfabertica
+cat fileName.txt | sort | uniq -u                 Muestra las lineas que no se repiten (las unicas) pero tenemos que usar el sort)
 
 
 

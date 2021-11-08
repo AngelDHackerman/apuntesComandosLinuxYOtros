@@ -1,0 +1,3 @@
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null | xargs cat                     comando para resolver el Bandit6
+cat fileName.txt | less       luego use /millionth                                             comando usado para Bandit7
+cat fileName.txt | sort | uniq -u                                                         comando para Bandit 8
